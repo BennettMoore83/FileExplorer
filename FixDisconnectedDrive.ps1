@@ -4,7 +4,7 @@
     No Admin rights required as it targets HKCU.
 #>
 
-$DriveLetter = "J" # You can change this if other letters appear
+# $DriveLetter = "J" # You can change this if other letters appear
 
 Write-Host "Searching for phantom $DriveLetter drive entries..." -ForegroundColor Cyan
 
@@ -15,12 +15,12 @@ if (Test-Path $MountPointsPath) {
     Write-Host "✓ Cleared MountPoints2 cache." -ForegroundColor Green
 }
 
-# 2. Clear standard Network Map key (even if it looks empty in Regedit)
+<# 2. Clear standard Network Map key (even if it looks empty in Regedit)
 $NetworkPath = "HKCU:\Network\$DriveLetter"
 if (Test-Path $NetworkPath) {
     Remove-Item $NetworkPath -Force -Recurse
     Write-Host "✓ Removed HKCU\Network\$DriveLetter key." -ForegroundColor Green
-}
+}#>
 
 # 3. Restart Explorer to refresh the shell
 Write-Host "Restarting Explorer to apply changes..." -ForegroundColor Yellow
